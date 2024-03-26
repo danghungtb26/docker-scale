@@ -1,0 +1,35 @@
+version: '3.6'
+
+services:
+  # mongo:
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: pass
+  #   ports:
+  #     - "27017:27017"
+    
+  # api:
+  #   image: node-image
+  #   deploy:
+  #     replicas: 1
+  #   environment:
+  #     MONGO_URL: mongodb://root:pass@mongo:27017
+  #   # ports:
+  #   #   - "3000:3000"
+  web:
+    image: front-image
+    # deploy:
+      # replicas: 1
+
+    ports:
+      - "4000:3000"
+  caddy:
+    image: caddy
+    ports:
+      - "3006:4000"
+      - "5000:5000"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./front-end/dist:/var/www/html/build

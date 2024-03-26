@@ -1,0 +1,8 @@
+FROM caddy:2.7.6-alpine
+
+COPY /caddy-server/Caddyfile /etc/caddy/Caddyfile
+
+# Copy the built application from the previous stage
+COPY /front-end/dist /var/www/html
+
+# RUN caddy fmt --overwrite /etc/caddy/Caddyfile

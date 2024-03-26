@@ -1,0 +1,19 @@
+{
+  "name": "docker-scale",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.1",
+    "mongoose": "^8.2.3"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1",
+    "autocannon": "^7.15.0"
+  },
+  "scripts": {
+    "build": "ncc build index.js -o dist"
+  }
+}
