@@ -6,8 +6,14 @@
 
 :5000 {
     handle_path /graphql/* {
-        rewrite * /graphql/{path}
-        reverse_proxy https://metabox.ctisoftware.vn
+        rewrite * /graphql{uri}
+
+        reverse_proxy https://metabox.ctisoftware.vn {
+            header_up Host metabox.ctisoftware.vn
+            header_up X-Real-IP {http.request.remote.host}
+            header_up X-Forwarded-Port {http.request.port}
+            header_up X-Forwarded-Proto {http.request.proto}
+       } 
     }
 
     reverse_proxy http://web:3000

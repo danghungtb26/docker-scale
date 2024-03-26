@@ -30,6 +30,7 @@ services:
     ports:
       - "3006:4000"
       - "5000:5000"
+      - "7000:7000"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./front-end/dist:/var/www/html/build
